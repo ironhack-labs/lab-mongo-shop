@@ -142,7 +142,8 @@ class Database {
 
         // database.collection(products).find({name: productName});
 
-        database.collection(users).update({name:userFirstName, {$push: {shoppingCart: database.collection(products).find({name: productName})}} },callback);
+        database.collection(users).updateOne({firstName: userFirstName}, {$push:{shoppingCart: productName}}, callback);
+
         // database.collection(users).find({$set: {"shoppingCart" : this.push(productBuy)} });
         // callback('Error buying product');
       }
@@ -159,8 +160,9 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
+        database.collection(products).updateOne({name: productName}, {$push:{review: review}}, callback);
 
-        callback('Error reviewing product');
+        // callback('Error reviewing product');
       }
     });
   }
