@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "clear": "0.0.1",
-    "mongodb": "^2.2.13"
+    "mongodb": "^2.2.22"
   }
 }
