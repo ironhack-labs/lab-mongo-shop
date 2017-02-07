@@ -1,16 +1,24 @@
 {
   "name": "ironhackshop",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Anton and Miguel",
   "license": "ISC",
   "dependencies": {
     "clear": "0.0.1",
-    "mongodb": "^2.2.13"
-  }
+    "mongodb": "^2.2.22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MPastorMeseguer/lab-mongo-shop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MPastorMeseguer/lab-mongo-shop/issues"
+  },
+  "homepage": "https://github.com/MPastorMeseguer/lab-mongo-shop#readme",
+  "description": ""
 }
