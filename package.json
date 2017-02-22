@@ -1,0 +1,25 @@
+{
+  "name": "lab-mongo-shop",
+  "version": "1.0.0",
+  "description": "![Ironhack Logo](https://i.imgur.com/1QgrNNw.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmonecke/lab-mongo-shop.git"
+  },
+  "keywords": [
+    "mongo"
+  ],
+  "author": "Walter Monecke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wmonecke/lab-mongo-shop/issues"
+  },
+  "homepage": "https://github.com/wmonecke/lab-mongo-shop#readme",
+  "dependencies": {
+    "mongodb": "^2.2.24"
+  }
+}
