@@ -106,7 +106,8 @@ db.users.updateMany(
     { $set: { "shoppingCart": [] } }
 )
 //PUSH SOME PRODUCTS INTO USER
-db.users.updateOne({ firstName: 'John' },{ $set: { 'shoppingCart': 'ObjectId("58e945ca16d6beed80f0ffb4")' }} )
+var banana = db.products.findOne( { name: 'Banana' } );
+db.users.updateOne({ firstName: 'John' },{ $push: { 'shoppingCart': banana }} )
 
 // PASTE LIST PRODUCTS QUERY HERE
 db.products.find();
