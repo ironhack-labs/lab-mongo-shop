@@ -2,7 +2,7 @@
 
 # PP | Mongo Shop
 
-![](https://i.imgur.com/IJKRm71.png =300x)
+<img src="https://i.imgur.com/IJKRm71.png" width="300px">
 
 ## Introduction
 
@@ -42,7 +42,7 @@ Once we define our collections, we should define what fields the documents insid
 **Sample User collection**
 ```javascript
 {
-  "_id": ObjectId,
+  "_id": ObjectId("582e3c59eb1b8eb7be087448"),
   "firstName": "John",
   "lastName": "Smith",
   "dateBirth": ISODate("2016-12-10T18:28:09.369Z"),
@@ -52,7 +52,10 @@ Once we define our collections, we should define what fields the documents insid
    "state": "NY",
    "postalCode": "10021"
   },
-  "shoppingCart": [ productId, productId]
+  "shoppingCart": [
+    ObjectId("582e3dd006a0c0b81841f47e"),
+    ObjectId("582e3cc7b03b5db7dd616cc8")
+  ]
 }
 ```
 
@@ -60,7 +63,7 @@ Once we define our collections, we should define what fields the documents insid
 
 ```javascript
 {
-  "_id": ObjectId,
+  "_id": ObjectId("582e3dd006a0c0b81841f47e"),
   "name": "WiredTiger T-shirt",
   "description":"Crafted from ultra-soft combed cotton, this essential t-shirt features sporty contrast tipping and MongoDB's signature leaf.",
   "category":"Apparel",
