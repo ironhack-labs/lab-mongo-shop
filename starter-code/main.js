@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const Database = require('./database');
 const Questions = require('./questions');
 const clear = require('clear');
@@ -25,17 +26,17 @@ function mainMenu(){
 			case "0":
 				console.log(`Bye\n`);
 				db.close((error) => {
-					process.exit(0);	
-				})
+					process.exit(0);
+				});
 				break;
 			default:
 				mainMenu();
 				break;
 		}
-	})
+	});
 }
 
-// Users 
+// Users
 function usersMenu(){
 	clear();
 	questions.showUserMenu();
@@ -57,7 +58,7 @@ function usersMenu(){
 				usersMenu();
 				break;
 		}
-	})	
+	});
 }
 
 function insertUser(){
@@ -75,7 +76,7 @@ function insertUser(){
 				});
 			}
 		});
-	})
+	});
 }
 
 function listUsers(){
@@ -94,7 +95,7 @@ function listUsers(){
 				usersMenu();
 			});
 		}
-	})
+	});
 }
 
 function deleteUser(){
@@ -111,8 +112,8 @@ function deleteUser(){
 					usersMenu();
 				});
 			}
-		})
-	})
+		});
+	});
 }
 
 // Products
@@ -137,7 +138,7 @@ function productMenu(){
 				productMenu();
 				break;
 		}
-	})	
+	});
 }
 
 function insertProduct(){
@@ -174,7 +175,7 @@ function listProducts(){
 				productMenu();
 			});
 		}
-	})
+	});
 }
 
 function deleteProduct(){
@@ -191,14 +192,14 @@ function deleteProduct(){
 					productMenu();
 				});
 			}
-		})
-	})
+		});
+	});
 }
 
 function buyProduct(){
 	questions.askingBuyProduct((userFirstName, productName) => {
 		db.addProductToShoppingCart({userFirstName, productName}, (error) => {
-			if (error) { 
+			if (error) {
 				console.log(error);
 				questions.continue(()=>{
 					mainMenu();
@@ -209,7 +210,7 @@ function buyProduct(){
 					mainMenu();
 				});
 			}
-		})
+		});
 	});
 }
 
@@ -220,12 +221,12 @@ function writeReview(){
 					console.log(error);
 					questions.continue(()=>{
 						mainMenu();
-					});	
+					});
 				} else {
 					console.log('Thanks for your review!!');
 					questions.continue(()=>{
 						mainMenu();
-					});	
+					});
 				}
 		});
 	});
