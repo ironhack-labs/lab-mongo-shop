@@ -10,3 +10,29 @@
 	},
 	"shoppingCart": []
 }
+
+{
+	"firstName": "Alex",
+	"lastName": "Ripoll",
+	"dateBirth": ISODate("1992-04-04T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "NA",
+	 "city": "Barcelona",
+	 "state": "SP",
+	 "postalCode": "08080"
+	},
+	"shoppingCart": []
+}
+
+{
+	"firstName": "Juan",
+	"lastName": "Rodriguez",
+	"dateBirth": ISODate("1984-08-28T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "NA",
+	 "city": "San Juan",
+	 "state": "PR",
+	 "postalCode": "00918"
+	},
+	"shoppingCart": []
+}
