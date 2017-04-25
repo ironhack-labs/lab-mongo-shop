@@ -1,0 +1,19 @@
+1.4.1
+db.users.updateOne({lastName: "Smith"}, {$set: {"users.shoppingCart": ["something"]}})
+1.4.2
+db.users.find({lastName: "Smith"}, {"users.shoppingCart": 1, _id:0}).pretty()
+1.4.3
+db.products.find().pretty()
+1.4.4
+db.products.find({category: "Kitchen"}).pretty()
+1.4.5
+db.products.updateOne({category: "Kitchen"}, {$set: {"reviews":
+  [
+    {
+      "name": "Shannon",
+      "comment": "This is so warm and comfortable.",
+      "stars": 2,
+      "date": "2016-11-10T18:28:09.369Z"
+    }
+
+  ]}})
