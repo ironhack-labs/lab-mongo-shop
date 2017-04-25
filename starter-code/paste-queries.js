@@ -3,9 +3,11 @@
 // PASTE 3 USER INSERT QUERIES HERE
 
 
+
 // 1.3 | Insert our first products in products collection
 // ------------------------------------------------------
 // PASTE 3 PRODUCT INSERT QUERIES HERE
+
 
 
 // 1.4 | Getting Started with queries
@@ -23,4 +25,3 @@
 
 
 // PASTE REVIEW QUERY HERE
-
