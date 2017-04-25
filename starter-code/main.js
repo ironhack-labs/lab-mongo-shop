@@ -1,23 +1,9 @@
-const MongoClient = require('mongodb').MongoClient;
-const clear = require('clear');
-
 const Database = require('./database');
 const Questions = require('./questions');
-
-const dbServer = 'localhost';
-const dbPort   = '27017';
-const dbName   = 'ironhackshop';
-const connectionURL = `mongodb://${dbServer}:${dbPort}/${dbName}`;
+const clear = require('clear');
 
 const db = new Database({ host: 'localhost:27017', database: 'myShop'});
 const questions = new Questions();
-
-MongoClient.connect(connectionURL, function(error, db) {
-  if(error) { console.log("Error connecting to server", error); return;}
-
-  console.log("Connected successfully to server")
-
-  // Make your queries here   
 
 function mainMenu(){
 	clear();
@@ -246,6 +232,3 @@ function writeReview(){
 }
 
 mainMenu();
-
-  db.close();
-});
