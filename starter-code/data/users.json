@@ -8,5 +8,7 @@
 	 "state": "NY",
 	 "postalCode": "10021"
 	},
-	"shoppingCart": []
+	"shoppingCart": [
+		ObjectId("582e3dd006a0c0b81841f47e");
+	]
 }
