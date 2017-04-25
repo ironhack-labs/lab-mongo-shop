@@ -274,7 +274,7 @@ insertUser(user, callback = (error, result) => {}){
 }
 ```
 
-In line 9 type `database.collection(USERS).insertOne();`
+In line 9 type `database.collection('users').insertOne();`
 
 If we check the documentation [insertOne(doc, options, callback)](http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html#insertOne)
 - `doc` is the document to insert
@@ -288,7 +288,7 @@ If we check the documentation [insertOne(doc, options, callback)](http://mongodb
   // LAB 1
   // Implement the query to insert a user
   // remeber once it's finish to comment callback('Error inserting user');
-  database.collection(users).insertOne(user, callback);
+  database.collection('users').insertOne(user, callback);
   callback('Error inserting user');
 }
 ...
