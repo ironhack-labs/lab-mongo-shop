@@ -64,8 +64,12 @@ db.products.insertOne({"name": "Water Bottle",
 // 1.4 | Getting Started with queries
 // ----------------------------------
 // PASTE SHOPPING CART QUERY HERE
+db.users.updateOne({"firstName": "RJ"},{$set:{"shoppingCart": []}})
+
 db.users.updateOne({"firstName":"RJ"},{$push:{"shoppingCart":"ObjectId('59498e2fa8f6d2b0f57c258a')"}})
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+db.users.updateOne({"firstName": "Val"},{$set:{"shoppingCart": []}})
 
 > db.users.updateOne({"firstName":"Val"}, {$push:{"shoppingCart":"ObjectId('59498ea4a8f6d2b0f57c258b')"}})
 { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
