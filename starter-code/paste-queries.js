@@ -59,10 +59,10 @@ db.products.insertOne(
 
 db.products.insertOne(
   {
-     "name": "Super-Duper Soaker",
-     "description":"More powerful than a water hose!  Warning: Do not spray at small children.",
-     "category":"Toys",
-     "price":230.00
+     "name": "Laser Gun",
+     "description": "Disintegrate anything that it touches!",
+     "category":"Weapon",
+     "price":200.0
   });
 
 
@@ -70,14 +70,31 @@ db.products.insertOne(
 // ----------------------------------
 // PASTE SHOPPING CART QUERY HERE
 
+db.users.updateOne( {"firstName": "John"}, {$push: {"Shopping-cart":{}}} );
 
 // PASTE LIST PRODUCTS QUERY HERE
 
+db.users.find({}, {"shopping-cart": 1});
+db.products.find({});
 
 // PASTE CATEGORY PRODUCTS QUERY HERE
+
+db.products.find({"category": "Weapon"});
 
 
 // PASTE DELETE PRODUCT QUERY HERE
 
+db.products.deleteOne(
+  {
+    "_id" : ObjectId("59498a769131c01b15b3a5e7")
+  });
 
 // PASTE REVIEW QUERY HERE
+
+db.products.updateOne( {"name": "Laser Gun"}, {$push: {"reviews": [ {
+      "name": "Shannon",
+      "comment": "This is so warm and comfortable.",
+      "stars": 2,
+      "date": "2016-11-10T18:28:09.369Z"
+    }
+  ] } };
