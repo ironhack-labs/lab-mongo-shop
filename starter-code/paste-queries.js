@@ -76,14 +76,32 @@ db.products.insertOne(
 // ----------------------------------
 // PASTE SHOPPING CART QUERY HERE
 
+db.users.updateOne( {"firstName": "John"}, {$push: {"Shopping-cart":{}}} );
+
+
+
 
 // PASTE LIST PRODUCTS QUERY HERE
+db.products.find({}).pretty();
+
 
 
 // PASTE CATEGORY PRODUCTS QUERY HERE
+db.products.find(
+  {
+    "category": "Weapon"
+  });
 
 
 // PASTE DELETE PRODUCT QUERY HERE
-
+db.products.deleteOne(
+  {
+    "_id" : ObjectId("59498ad52e13c43a599f3298")
+  });
 
 // PASTE REVIEW QUERY HERE
+
+db.products.updateOne(
+  {"name": "Laser Gun"},
+  {$push: {"reviews":
+  [   {"name": "Shannon", "comment": "This is so warm and comfortable.", "stars": 2, "date": "2016-11-10T18:28:09.369Z" } ] } } );
