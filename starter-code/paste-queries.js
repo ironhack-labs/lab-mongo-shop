@@ -76,12 +76,14 @@ db.users.updateOne({"firstName": "Val"},{$set:{"shoppingCart": []}})
 
 
 // PASTE LIST PRODUCTS QUERY HERE
-
+db.products.find().pretty()
 
 // PASTE CATEGORY PRODUCTS QUERY HERE
 
-
+db.products.find({"category":"Kitchen"}).pretty()
 // PASTE DELETE PRODUCT QUERY HERE
-
+db.products.deleteOne({"category":"Kitchen"})
+{ "acknowledged" : true, "deletedCount" : 1 }
 
 // PASTE REVIEW QUERY HERE
+db.products.updateOne({name:"book"},{$set:{"reviews": [{"name":"Val", "comment":"Best Book Ever!", "stars":5, "date":"2016-11-10T18:28:09.369Z"}]}})
