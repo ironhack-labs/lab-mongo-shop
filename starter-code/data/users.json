@@ -10,3 +10,27 @@
 	},
 	"shoppingCart": []
 }
+{
+	"firstName": "Miguel",
+	"lastName": "Perez",
+	"dateBirth": ISODate("1983-11-10T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "Antonio Toledano 22",
+	 "city": "Madrid",
+	 "state": null,
+	 "postalCode": "28028"
+	},
+	"shoppingCart": []
+}
+{
+	"firstName": "Zofia",
+	"lastName": "Szczudlik",
+	"dateBirth": ISODate("1979-02-02T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "San Ambrosio 8",
+	 "city": "Madrid",
+	 "state": null,
+	 "postalCode": "28011"
+	},
+	"shoppingCart": []
+}
