@@ -43,8 +43,8 @@ class Database {
         // Implement the query to insert a user
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
-        
-        callback('Error inserting user');
+        database.collection('users').insertOne(user, callback);
+        // callback('Error inserting user');
       }
     });
   }
@@ -57,8 +57,8 @@ class Database {
         //  LAB 2
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
-        
-        callback('Error listing users');
+        database.collection('users').find(users, callback);
+        // callback('Error listing users');
       }
     });
   }
