@@ -107,7 +107,7 @@ class Database {
     });
   }
 
-  deleteProduct( name, callback = (error, result) => {}) {
+  deleteProduct( productName, callback = (error, result) => {}) {
     this.connect((error, database) => {
       if (error){
         callback(error);
@@ -116,7 +116,7 @@ class Database {
         // Implement the query to delete a product
         // productName is the name of the producto to delete 
         // remeber once it's finish to comment callback('Error deleting product');
-        database.collection('products').deleteOne({name}, callback);
+        database.collection('products').deleteOne({name: productName}, callback);
         // callback('Error deleting product');
       }
     });
