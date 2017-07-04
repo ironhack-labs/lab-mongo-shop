@@ -1,0 +1,18 @@
+{
+   "name": "Water Bottle",
+   "description":"High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe",
+   "category":"Kitchen",
+   "price":23.0
+}
+{
+   "name": "Bed",
+   "description":"King size bedroom bed made of super coool wood",
+   "category":"Bedroom",
+   "price":2999.0
+}
+{
+   "name": "TV 55",
+   "description":"High quality Television of 55 inches",
+   "category":"Living Room",
+   "price":1500.0
+}
