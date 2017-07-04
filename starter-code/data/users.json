@@ -10,3 +10,40 @@
 	},
 	"shoppingCart": []
 }
+
+{
+	"firstName": "Andrea",
+	"lastName": "Bravo",
+	"dateBirth": ISODate("2016-10-06T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "3 20th Street",
+	 "city": "New",
+	 "state": "NY",
+	 "postalCode": "00521"
+	},
+	"shoppingCart": []
+}
+{
+	"firstName": "Patri",
+	"lastName": "Benitez",
+	"dateBirth": ISODate("1997-03-10T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "300 5th Street",
+	 "city": "Arkansas",
+	 "state": "MI",
+	 "postalCode": "99521"
+	},
+	"shoppingCart": []
+}
+
+{
+ "firstName": "Sara",
+ "lastName": "Latorre",
+ "dateBirth": ISODate("1985-06-27T18:28:09.369Z"),
+ "address": {
+   "streetAddress": "42 Wallaby Street",
+   "city": "Sydney",
+   "state": "SD",
+   "postalCode": "12345"
+ }
+}
