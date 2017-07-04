@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 // 1.2 | Insert our first users in users collection
 // ------------------------------------------------
 // PASTE 3 USER INSERT QUERIES HERE
@@ -23,4 +24,3 @@
 
 
 // PASTE REVIEW QUERY HERE
-
