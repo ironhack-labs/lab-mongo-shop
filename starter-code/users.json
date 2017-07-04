@@ -1,0 +1,33 @@
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "dateBirth": ISODate("2016-12-10T18:28:09.369Z"),
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+    "postalCode": "10021"
+  }
+}
+{
+  "firstName": "Maria",
+  "lastName": "Mayer",
+  "dateBirth": ISODate("1989-08-09T18:28:09.369Z"),
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "Buenos Aires",
+    "state": "Argentina",
+    "postalCode": "10021"
+  }
+}
+{
+  "firstName": "Arnau",
+  "lastName": "Guadall",
+  "dateBirth": ISODate("1989-01-12T18:28:09.369Z"),
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "Vic",
+    "state": "Spain",
+    "postalCode": "10021"
+  }
+}
