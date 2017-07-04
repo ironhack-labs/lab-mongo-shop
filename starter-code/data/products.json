@@ -1,4 +1,4 @@
-[{ 
+[{
    "name": "Water Bottle",
    "description":"High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe",
    "category":"Kitchen",
@@ -23,4 +23,35 @@
     }
    ],
    "price":12.0
+},
+{
+   "name": "Socks",
+   "description":"Red and warm",
+   "category":"Apparel",
+   "price":5.0
+},
+{
+   "name": "Book",
+   "description":"High quality. Innovative design",
+   "category":"Library",
+   "price":13.0
+},
+{
+ "name": "Scrump",
+ "description":"Weird doll.",
+ "category":"Toys",
+ "reviews": [
+   {
+     "name": "Lilo",
+     "comment": "She has a big head because a bug laid eggs in her ear.",
+     "stars": 5,
+     "date": "2017-07-04T18:28:09.369Z"
+   },
+   {
+     "name": "Stitch",
+     "comment": "Also useful as an explosive.",
+     "stars": 4,
+     "date": "2017-06-23T18:28:09.369Z"
+   }],
+ "price":1.0
 }]
