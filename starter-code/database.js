@@ -141,9 +141,9 @@ class Database {
       if (error) {
         callback(error);
       } else {
-
-        database.collection("products").insertOne({productName, userFirstName}, callback);
-
+        database.collection('users').update(
+           { "firstName": userFirstName },
+           { $push: { "shoppingCart": productName } }, callback);
         // LAB 7
         // Implement the query to buy a product0
         // userFirstName is the name of user who purchase the product
@@ -161,13 +161,17 @@ class Database {
       if (error) {
         callback(error);
       } else {
+         database.collection('products').update(
+          { "name": productName },
+          { $push: { "reviews": review } }, callback);
+          
         // LAB 8
         // Implement the query to review a product
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
 
-        callback('Error reviewing product');
+        // callback('Error reviewing product');
       }
     });
   }
