@@ -3,6 +3,8 @@ const users = 'users';
 const products = 'products';
 const shoppingCarts = 'shoppingCarts';
 
+
+
 class Database {
 
   constructor({ host, database }) {
@@ -39,12 +41,10 @@ class Database {
       if (error){
         callback(error);
       } else {
-        // LAB 1
-        // Implement the query to insert a user
-        // user is the document that we want to insert
-        // remeber once it's finish to comment callback('Error inserting user');
         
-        callback('Error inserting user');
+        database.collection('users').insertOne(user, callback);
+        
+        //callback('Error inserting user');
       }
     });
   }
@@ -54,11 +54,10 @@ class Database {
       if (error){
         callback(error);
       } else {
-        //  LAB 2
-        // Implement the query to insert a user
-        // remeber once it's finish to comment callback('Error listing users');
+
+        database.collection('users').find(callback);
         
-        callback('Error listing users');
+        //callback('Error listing users');
       }
     });
   }
@@ -84,11 +83,12 @@ class Database {
         callback(error);
       } else {
         // LAB 4
+        database.collection('products').insertOne(product, callback);
         // Implement the query to insert a product
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
         
-        callback('Error inserting product');
+        //callback('Error inserting product');
       }
     });
   }
@@ -98,11 +98,10 @@ class Database {
       if (error){
         callback(error);
       } else {
-        // LAB 5
-        // Implement the query to list all products
-        // remeber once it's finish to comment callback('Error listing products');
+       
+       database.collection('products').find(callback);
         
-        callback('Error listing products');
+        //callback('Error listing products');
       }
     });
   }
