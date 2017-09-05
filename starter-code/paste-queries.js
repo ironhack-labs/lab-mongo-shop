@@ -10,6 +10,10 @@
 
 // 1.4 | Getting Started with queries
 // ----------------------------------
+// db.users.updateMany({}, { $push : {"shoppingCart" : [] }})
+// db.products.remove({"name" : "Water Bottle"},{justOne:true})
+
+
 // PASTE SHOPPING CART QUERY HERE
 
 
@@ -23,4 +27,3 @@
 
 
 // PASTE REVIEW QUERY HERE
-
