@@ -84,10 +84,15 @@ db.users.updateOne({"firstName":"Miriam"}, {$push:{
   "shoppingCart": ObjectId("59aeb0bee1d22d4e41782f94")
 }})
 // PASTE LIST PRODUCTS QUERY HERE
-db.products.find()
+db.users.find({firstName:"Miriam"},{shoppingCart:1})
 
 // PASTE CATEGORY PRODUCTS QUERY HERE
-db.products.find({ "category": "Kitchen" })
+db.products.find({
+  "_id": ObjectId("59aeb0f5e1d22d4e41782f95"), 
+  "_id": ObjectId("59aeb0bee1d22d4e41782f94")
+  },
+  {"category": "Kitchen"}
+)
 
 // PASTE DELETE PRODUCT QUERY HERE
 db.products.deleteOne({"_id": ObjectId("59aeb0f5e1d22d4e41782f95")})
