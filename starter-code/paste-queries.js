@@ -3,6 +3,19 @@
 // PASTE 3 USER INSERT QUERIES HERE
 
 
+// {
+//   "firstName": "Gabriele",
+//   "lastName": "Dolfi",
+//   "dateBirth": ISODate("1992-09-24T18:28:09.369Z"),
+//   "address": {
+//     "streetAddress": "24 Maggio",
+//     "city": "Pisa",
+//     "state": "Pi",
+//     "postalCode": "56020"
+//   }
+// }
+
+
 // 1.3 | Insert our first products in products collection
 // ------------------------------------------------------
 // PASTE 3 PRODUCT INSERT QUERIES HERE
