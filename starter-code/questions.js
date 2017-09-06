@@ -26,7 +26,7 @@ class Questions {
 *******************************
 * 1.- Insert a User           *
 * 2.- List all User           *
-* 3.- Delete a User           * 
+* 3.- Delete a User           *
 * 0.- Back                    *
 *******************************
 	`);
@@ -39,7 +39,7 @@ class Questions {
 * 2.- List all Products.      *
 * 3.- Delete a Product        *
 * 0.- Back                    *
-*******************************             
+*******************************
 		`);
 	}
 
@@ -62,11 +62,11 @@ class Questions {
 					this.rl.question('Type a city: ', (city) => {
 						this.rl.question('Type a state: ', (state) => {
 							this.rl.question('type a postalCode: ', (postalCode) => {
-								const user = { 
-										firstName, 
-										lastName, 
-										dateBirth: new Date(), 
-										address: { street, city, state, postalCode } 
+								const user = {
+										firstName,
+										lastName,
+										dateBirth: new Date(),
+										address: { street, city, state, postalCode }
 									};
 								callback(user);
 							})
@@ -87,12 +87,12 @@ class Questions {
 		this.rl.question('Type a name: ', (name) => {
 			this.rl.question('Type a description: ', (description) => {
 				this.rl.question('Type a price: ', (price) => {
-					this.rl.question('Type a category: ', (category) => {					
-						const product = { 
-								name, 
-								description, 
-								price: parseFloat(price), 
-								category: category, 
+					this.rl.question('Type a category: ', (category) => {
+						const product = {
+								name,
+								description,
+								price: parseFloat(price),
+								category: category,
 							};
 						callback(product);
 					})
@@ -124,9 +124,9 @@ class Questions {
 						callback(product, review);
 					});
 				});
-			});	
+			});
 		});
-		
+
 	}
 }
 
