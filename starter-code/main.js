@@ -231,4 +231,6 @@ function writeReview(){
 	});
 }
 
-mainMenu();
+mainMenu()
+// db.connect( () => mainMenu())
+// or db.connect(mainMenu)
