@@ -33,18 +33,19 @@ class Database {
   }
   // Insert a user
   // user is the object to insert into the collection
-  // callback has two arguments error and result 
+  // callback has two arguments error and result
   insertUser(user, callback = (error, result) => {}){
     this.connect((error, database) => {
       if (error){
         callback(error);
       } else {
+        console.log("guardando user")
         // LAB 1
-        // Implement the query to insert a user
+        database.collection("users").insertOne(user, callback);
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
-        
-        callback('Error inserting user');
+
+        //callback('Error inserting user');
       }
     });
   }
@@ -56,9 +57,9 @@ class Database {
       } else {
         //  LAB 2
         // Implement the query to insert a user
-        // remeber once it's finish to comment callback('Error listing users');
-        
-        callback('Error listing users');
+        database.collection(users).find({}).toArray(callback);
+
+        //callback('Error listing users');
       }
     });
   }
@@ -69,11 +70,11 @@ class Database {
         callback(error);
       } else {
         //  LAB 3
-        // Implement the query to delete a user
+        database.collection("users").deleteOne({"firstName": userName}, callback);
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
-        
-        callback('Error deleting user');
+
+        //callback('Error deleting user');
       }
     });
   }
@@ -84,11 +85,10 @@ class Database {
         callback(error);
       } else {
         // LAB 4
-        // Implement the query to insert a product
+        database.collection("products").insertOne(product, callback);
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
-        
-        callback('Error inserting product');
+        //callback('Error inserting product');
       }
     });
   }
@@ -99,10 +99,11 @@ class Database {
         callback(error);
       } else {
         // LAB 5
-        // Implement the query to list all products
+        database.collection(products).find({}).toArray(callback);
+
         // remeber once it's finish to comment callback('Error listing products');
-        
-        callback('Error listing products');
+
+        //callback('Error listing products');
       }
     });
   }
@@ -113,10 +114,12 @@ class Database {
         callback(error);
       } else {
         // LAB 6
+
+          database.collection("products").deleteOne({"productName": productName}, callback);
         // Implement the query to delete a product
-        // productName is the name of the producto to delete 
+        // productName is the name of the producto to delete
         // remeber once it's finish to comment callback('Error deleting product');
-        
+
         callback('Error deleting product');
       }
     });
@@ -128,13 +131,14 @@ class Database {
         callback(error);
       } else {
         // LAB 7
+        database.collection("users").updateOne({"firstName":userFirstName},{$set: {"shoppingCart":productName}},callback);
         // Implement the query to buy a product
         // userFirstName is the name of user who purchase the product
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-        
-        callback('Error buying product');
+
+        //callback('Error buying product');
       }
     });
   }
@@ -149,8 +153,9 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-        
-        callback('Error reviewing product');
+        database.collection("products").updateOne({"productName":productName},{$set: {"review":review}},callback);
+
+        //callback('Error reviewing product');
       }
     });
   }
