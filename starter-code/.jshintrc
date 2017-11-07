@@ -1,0 +1,12 @@
+{
+  "strict": true,
+  "globalstrict": true,
+  "esversion": 6,
+  "globals": {
+    "require": true,
+    "console": true,
+    "connect": true,
+    "process": true,
+    "module": true
+  }
+}
