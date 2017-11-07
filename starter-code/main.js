@@ -5,6 +5,8 @@ const clear = require('clear');
 const db = new Database({ host: 'localhost:27017', database: 'myShop'});
 const questions = new Questions();
 
+
+
 function mainMenu(){
 	clear();
 	questions.showMainMenu();
@@ -25,7 +27,7 @@ function mainMenu(){
 			case "0":
 				console.log(`Bye\n`);
 				db.close((error) => {
-					process.exit(0);	
+					process.exit(0);
 				})
 				break;
 			default:
@@ -35,7 +37,7 @@ function mainMenu(){
 	})
 }
 
-// Users 
+// Users
 function usersMenu(){
 	clear();
 	questions.showUserMenu();
@@ -57,7 +59,7 @@ function usersMenu(){
 				usersMenu();
 				break;
 		}
-	})	
+	})
 }
 
 function insertUser(){
@@ -137,7 +139,7 @@ function productMenu(){
 				productMenu();
 				break;
 		}
-	})	
+	})
 }
 
 function insertProduct(){
@@ -198,7 +200,7 @@ function deleteProduct(){
 function buyProduct(){
 	questions.askingBuyProduct((userFirstName, productName) => {
 		db.addProductToShoppingCart({userFirstName, productName}, (error) => {
-			if (error) { 
+			if (error) {
 				console.log(error);
 				questions.continue(()=>{
 					mainMenu();
@@ -220,12 +222,12 @@ function writeReview(){
 					console.log(error);
 					questions.continue(()=>{
 						mainMenu();
-					});	
+					});
 				} else {
 					console.log('Thanks for your review!!');
 					questions.continue(()=>{
 						mainMenu();
-					});	
+					});
 				}
 		});
 	});
