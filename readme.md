@@ -336,3 +336,150 @@ In this exercise we've practised the basics queries in MongoShell also we've lea
 [Reference API MongoDB Driver](http://mongodb.github.io/node-mongodb-native/2.2/api/)
 [MongoDB Driver Website](https://mongodb.github.io/node-mongodb-native/)
 [Getting Started](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/)
+
+
+//PART 1
+
+```> use myShop
+switched to db myShop
+> db
+myShop
+> show collections
+> db.users.insertOne({
+...   "firstName": "John",
+...   "lastName": "Smith",
+...   "dateBirth": ISODate("2016-12-10T18:28:09.369Z"),
+...   "address": {
+...     "streetAddress": "21 2nd Street",
+...     "city": "New York",
+...     "state": "NY",
+...     "postalCode": "10021"
+...   }
+... })
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5a019755cf1b82f9d4256ac8")
+}
+> show collections
+users
+> db.users.insertOne({   "firstName": "Sergio", "lastName": "De Diego" })
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5a0197f7cf1b82f9d4256ac9")
+}
+> db.users.insertOne({   "firstName": "Asier", "lastName": "Cisneros" })
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5a019823cf1b82f9d4256aca")
+}
+> db.products.insertOne({
+...    "name": "Water Bottle",
+...    "description":"High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe",
+...    "category":"Kitchen",
+...    "price":23.0
+... })
+{
+	"acknowledged" : true,
+	"insertedId" : ObjectId("5a019863cf1b82f9d4256acb")
+}
+> db.products.insertMany([{ "name": "computer", "category": "Electronics", "price": 500}, { "name": "smartphone", "category": "Electronics", "price": 200}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("5a019917cf1b82f9d4256acc"),
+		ObjectId("5a019917cf1b82f9d4256acd")
+	]
+}
+> db.users.find()
+{ "_id" : ObjectId("5a019755cf1b82f9d4256ac8"), "firstName" : "John", "lastName" : "Smith", "dateBirth" : ISODate("2016-12-10T18:28:09.369Z"), "address" : { "streetAddress" : "21 2nd Street", "city" : "New York", "state" : "NY", "postalCode" : "10021" } }
+{ "_id" : ObjectId("5a0197f7cf1b82f9d4256ac9"), "firstName" : "Sergio", "lastName" : "De Diego" }
+{ "_id" : ObjectId("5a019823cf1b82f9d4256aca"), "firstName" : "Asier", "lastName" : "Cisneros" }
+> db.users.find().pretty()
+{
+	"_id" : ObjectId("5a019755cf1b82f9d4256ac8"),
+	"firstName" : "John",
+	"lastName" : "Smith",
+	"dateBirth" : ISODate("2016-12-10T18:28:09.369Z"),
+	"address" : {
+		"streetAddress" : "21 2nd Street",
+		"city" : "New York",
+		"state" : "NY",
+		"postalCode" : "10021"
+	}
+}
+{
+	"_id" : ObjectId("5a0197f7cf1b82f9d4256ac9"),
+	"firstName" : "Sergio",
+	"lastName" : "De Diego"
+}
+{
+	"_id" : ObjectId("5a019823cf1b82f9d4256aca"),
+	"firstName" : "Asier",
+	"lastName" : "Cisneros"
+}
+> db.products.find().pretty()
+{
+	"_id" : ObjectId("5a019863cf1b82f9d4256acb"),
+	"name" : "Water Bottle",
+	"description" : "High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe",
+	"category" : "Kitchen",
+	"price" : 23
+}
+{
+	"_id" : ObjectId("5a019917cf1b82f9d4256acc"),
+	"name" : "computer",
+	"category" : "Electronics",
+	"price" : 500
+}
+{
+	"_id" : ObjectId("5a019917cf1b82f9d4256acd"),
+	"name" : "smartphone",
+	"category" : "Electronics",
+	"price" : 200
+}
+> db.users.updateOne({ "name": "Asier" }, { "shoppingCart": "ObjectId("5a019917cf1b82f9d4256acd")"})
+2017-11-07T12:36:22.780+0100 E QUERY    [thread1] SyntaxError: identifier starts immediately after numeric literal @(shell):1:69
+> db.users.updateOne({ "name": "Asier" }, { "shoppingCart": ObjectId("5a019917cf1b82f9d4256acd")})
+2017-11-07T12:37:29.922+0100 E QUERY    [thread1] Error: the update operation document must contain atomic operators :
+DBCollection.prototype.updateOne@src/mongo/shell/crud_api.js:524:1
+@(shell):1:1
+> db.users.updateOne({ "name": "Asier" }, { $set: { "shoppingCart": ObjectId("5a019917cf1b82f9d4256acd")}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.users.updateOne({ "name": "Sergio"}, { $set: { "shoppingCart": ObjectId("5a019917cf1b82f9d4256acc")}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.products.find( { "category": "Electronics"} ).pretty()
+{
+	"_id" : ObjectId("5a019917cf1b82f9d4256acc"),
+	"name" : "computer",
+	"category" : "Electronics",
+	"price" : 500
+}
+{
+	"_id" : ObjectId("5a019917cf1b82f9d4256acd"),
+	"name" : "smartphone",
+	"category" : "Electronics",
+	"price" : 200
+}
+> db.products.deleteOne( { "name": "smartphone" } )
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.products.updateOne( { "name": "computer"}, { $set: { "reviews": [
+...     {
+...       "name": "Shannon",
+...       "comment": "This is so warm and comfortable.",
+...       "stars": 2,
+...       "date": "2016-11-10T18:28:09.369Z"
+...     }
+...   ]}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> show collections
+products
+users
+> db.users.find()
+{ "_id" : ObjectId("5a019755cf1b82f9d4256ac8"), "firstName" : "John", "lastName" : "Smith", "dateBirth" : ISODate("2016-12-10T18:28:09.369Z"), "address" : { "streetAddress" : "21 2nd Street", "city" : "New York", "state" : "NY", "postalCode" : "10021" } }
+{ "_id" : ObjectId("5a0197f7cf1b82f9d4256ac9"), "firstName" : "Sergio", "lastName" : "De Diego" }
+{ "_id" : ObjectId("5a019823cf1b82f9d4256aca"), "firstName" : "Asier", "lastName" : "Cisneros" }
+> db.products.find()
+{ "_id" : ObjectId("5a019863cf1b82f9d4256acb"), "name" : "Water Bottle", "description" : "High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe", "category" : "Kitchen", "price" : 23 }
+{ "_id" : ObjectId("5a019917cf1b82f9d4256acc"), "name" : "computer", "category" : "Electronics", "price" : 500, "reviews" : [ { "name" : "Shannon", "comment" : "This is so warm and comfortable.", "stars" : 2, "date" : "2016-11-10T18:28:09.369Z" } ] }
+> ^C
+bye```
