@@ -133,7 +133,7 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-        database.collection(users).updateOne({"firstName":userFirstName},{$set: {"shoppingCart":productName}},callback);
+        database.collection(users).updateOne({"firstName":userFirstName},{$push: {"shoppingCart":productName}},callback);
         //callback('Error buying product');
       }
     });
@@ -149,7 +149,7 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-        database.collection(products).updateOne({"name":productName},{$set: {"review":review}},callback);
+        database.collection(products).updateOne({"name":productName},{$push: {"review":review}},callback);
         //callback('Error reviewing product');
       }
     });
