@@ -59,7 +59,9 @@ class Database {
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
 
-        callback('Error listing users');
+        database.collection('users').find({}, callback);
+
+        // callback('Error listing users');
       }
     });
   }
@@ -74,7 +76,9 @@ class Database {
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
 
-        callback('Error deleting user');
+        database.collection(users).deleteOne({'firstName':firstName}, callback);
+
+        // callback('Error deleting user');
       }
     });
   }
@@ -89,7 +93,9 @@ class Database {
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
 
-        callback('Error inserting product');
+        database.collection(products).insertOne(product, callback);
+
+        // callback('Error inserting product');
       }
     });
   }
