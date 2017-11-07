@@ -133,8 +133,14 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-         database.collection("users").updateOne({"firstName":userFirstName}, {$push: {"shoppingCarts": productName}}, callback);
-        // callback('Error buying product');
+        database.collection("products").findOne({"name":productName}, (err, docs) => {
+          if(err) {
+            console.log(err);
+          }
+          database.collection("users").updateOne({"firstName":userFirstName},
+          {$push: {"shoppingCarts": docs._id }}, callback);
+          // callback('Error buying product')
+        });
       }
     });
   }
