@@ -39,12 +39,13 @@ class Database {
       if (error){
         callback(error);
       } else {
+        database.collection("users").insertOne(user,callback);
         // LAB 1
         // Implement the query to insert a user
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
 
-        callback('Error inserting user');
+        //callback('Error inserting user');
       }
     });
   }
@@ -54,11 +55,12 @@ class Database {
       if (error){
         callback(error);
       } else {
+      database.collection("users").find(callback);
         //  LAB 2
-        // Implement the query to insert a user
+        // Implement the query to insert a user list
         // remeber once it's finish to comment callback('Error listing users');
 
-        callback('Error listing users');
+        //callback('Error listing users');
       }
     });
   }
@@ -68,12 +70,13 @@ class Database {
       if (error){
         callback(error);
       } else {
+        database.collection("users").deleteOne({firstName : firstName},callback);
         //  LAB 3
         // Implement the query to delete a user
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
 
-        callback('Error deleting user');
+        //callback('Error deleting user');
       }
     });
   }
@@ -142,8 +145,9 @@ class Database {
   addReviewToProduct( {productName, review}, callback = (messageResult) => {}){
     this.connect((error, database) => {
       if (error) {
-        callback(error)
+        callback(error);
       } else {
+        database.collection("users").insertOne(user,callback);
         // LAB 8
         // Implement the query to review a product
         // productName is the name of the product to review
