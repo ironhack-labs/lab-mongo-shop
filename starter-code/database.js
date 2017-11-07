@@ -133,8 +133,8 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-
-        callback('Error buying product');
+         database.collection("users").updateOne({"firstName":userFirstName}, {$push: {"shoppingCarts": productName}}, callback);
+        // callback('Error buying product');
       }
     });
   }
@@ -142,15 +142,15 @@ class Database {
   addReviewToProduct( {productName, review}, callback = (messageResult) => {}){
     this.connect((error, database) => {
       if (error) {
-        callback(error)
+        callback(error);
       } else {
         // LAB 8
         // Implement the query to review a product
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-
-        callback('Error reviewing product');
+      database.collection("products").updateOne({"name":productName}, {$push: {"reviews": review}}, callback);
+        // callback('Error reviewing product');
       }
     });
   }
