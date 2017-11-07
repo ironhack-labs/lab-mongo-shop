@@ -108,8 +108,8 @@ class Database {
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
-
-        callback('Error listing products');
+            database.collection('products').find({}, callback);
+        // callback('Error listing products');
       }
     });
   }
@@ -123,8 +123,8 @@ class Database {
         // Implement the query to delete a product
         // productName is the name of the producto to delete
         // remeber once it's finish to comment callback('Error deleting product');
-
-        callback('Error deleting product');
+  database.collection(products).deleteOne({'name':productName}, callback);
+        // callback('Error deleting product');
       }
     });
   }
@@ -140,8 +140,13 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-
-        callback('Error buying product');
+        let productID = database.collection(products).find({"name":productName},{"_id":1, "name":0, "description":0, "category":0, "price":0}, callback);
+        database.collection(users).update(
+          { "firstName": userFirstName},
+          { $push:
+            { "shoppingCart": productID }
+          }, callback);
+        // callback('Error buying product');
       }
     });
   }
@@ -157,7 +162,13 @@ class Database {
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
 
-        callback('Error reviewing product');
+        database.collection(products).update(
+          { "name": productName},
+          { $push:
+            { "reviews": review }
+          }, callback);
+
+        // callback('Error reviewing product');
       }
     });
   }
