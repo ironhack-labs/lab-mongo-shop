@@ -10,3 +10,15 @@
 	},
 	"shoppingCart": []
 }
+{
+firstName: "Fran",
+lastName:"Molpeceres",
+dateBirth:ISODate("1989-11-15T18:28:09.369Z"),
+address:{
+	streetAddress: "Chopera, 29",
+	city: "Madrid",
+	state: "Madrid",
+	postalCode:"28001"
+},
+	shoppingCart:[]
+}
