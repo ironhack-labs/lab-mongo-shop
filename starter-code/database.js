@@ -43,8 +43,8 @@ class Database {
         // Implement the query to insert a user
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
-        
-        callback('Error inserting user');
+        this.database.collection(users).insertOne(user,callback);
+       // callback('Error inserting user');
       }
     });
   }
@@ -54,11 +54,20 @@ class Database {
       if (error){
         callback(error);
       } else {
+        this.database.collection(users).find({}, callback);
         //  LAB 2
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
-        
-        callback('Error listing users');
+        // this.database.collection('users').find().toArray(function(err, docs){
+          // if (err) throw err;
+          // console.log(database);
+          // console.log("Users:");
+          // console.log(docs);
+          // database.close();
+          
+      // });
+      // this.database.close();
+       // callback('Error listing users');
       }
     });
   }
@@ -72,8 +81,8 @@ class Database {
         // Implement the query to delete a user
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
-        
-        callback('Error deleting user');
+        this.database.collection('users').deleteOne({"firstName" : firstName},callback);
+      //  callback('Error deleting user');
       }
     });
   }
