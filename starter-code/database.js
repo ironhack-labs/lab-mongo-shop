@@ -90,8 +90,8 @@ class Database {
         // Implement the query to insert a product
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
-        database.collection('products').insertOne(user);
-        callback(produt);
+        database.collection('products').insertOne(product);
+        callback(product);
         // callback('Error inserting product');
       }
     });
@@ -105,8 +105,9 @@ class Database {
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
-
-        callback('Error listing products');
+        let datas=database.collection('products').find();
+        callback(null, datas);
+        // callback('Error listing products');
       }
     });
   }
