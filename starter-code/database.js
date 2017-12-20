@@ -90,8 +90,9 @@ class Database {
         // Implement the query to insert a product
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
-
-        callback('Error inserting product');
+        database.collection('products').insertOne(user);
+        callback(produt);
+        // callback('Error inserting product');
       }
     });
   }
