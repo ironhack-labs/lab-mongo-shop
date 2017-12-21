@@ -154,13 +154,15 @@ class Database {
       if (error) {
         callback(error)
       } else {
+        this.database.collection(products).updateOne({"name": productName},{$addToSet:{"reviews":review}},callback);
+
         // LAB 8
         // Implement the query to review a product
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
         
-        callback('Error reviewing product');
+      //  callback('Error reviewing product');
       }
     });
   }
