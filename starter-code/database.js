@@ -96,8 +96,8 @@ class Database {
         // Implement the query to insert a product
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
-        
-        callback('Error inserting product');
+        this.database.collection(products).insertOne(product,callback);
+        //callback('Error inserting product');
       }
     });
   }
@@ -110,8 +110,8 @@ class Database {
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
-        
-        callback('Error listing products');
+        this.database.collection(products).find({}, callback);
+        //callback('Error listing products');
       }
     });
   }
@@ -125,8 +125,8 @@ class Database {
         // Implement the query to delete a product
         // productName is the name of the producto to delete 
         // remeber once it's finish to comment callback('Error deleting product');
-        
-        callback('Error deleting product');
+        this.database.collection('users').deleteOne({"productName" : productName},callback);
+        //callback('Error deleting product');
       }
     });
   }
@@ -136,6 +136,7 @@ class Database {
       if (error) {
         callback(error);
       } else {
+        this.database.collection(users).updateOne({"firstName": userFirstName},{$addToSet:{"shoppingCart":productName}},callback);
         // LAB 7
         // Implement the query to buy a product
         // userFirstName is the name of user who purchase the product
@@ -143,7 +144,7 @@ class Database {
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
         
-        callback('Error buying product');
+       // callback('Error buying product');
       }
     });
   }
