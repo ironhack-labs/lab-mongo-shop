@@ -90,6 +90,7 @@ function listUsers(){
 			users.forEach((user) => {
 				console.dir(user);
 			});
+	//		console.log('hola');
 			questions.continue(() => {
 				usersMenu();
 			});
