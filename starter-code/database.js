@@ -45,7 +45,7 @@ class Database {
         // remeber once it's finish to comment callback('Error inserting user');
         database.collection('users').insertOne(user,function(error, result){
           if(error) throw error;
-          console.log("user inserted");
+          callback("user inserted");
         });
         //callback('Error inserting user');
       }
@@ -62,7 +62,7 @@ class Database {
         // remeber once it's finish to comment callback('Error listing users');
         database.collection('users').find({}).toArray(function(error,result){
           if(error) throw error;
-          console.log(result);
+          callback(result);
         });
         //callback('Error listing users');
       }
@@ -78,8 +78,11 @@ class Database {
         // Implement the query to delete a user
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
-
-        callback('Error deleting user');
+        database.collection('users').deleteOne({firstName:firstName}, function(error, obj){
+          if(error) throw error;
+          callback('user deleted');
+        });
+        //callback('Error deleting user');
       }
     });
   }
@@ -95,7 +98,7 @@ class Database {
         // remeber once it's finish to comment callback('Error inserting product');
         database.collection('products').insertOne(product,function(error, result){
           if(error) throw error;
-          console.log("product inserted");
+          callback("product inserted");
         });;
         //callback('Error inserting product');
       }
@@ -112,9 +115,9 @@ class Database {
         // remeber once it's finish to comment callback('Error listing products');
         database.collection('products').find({}).toArray(function(error,result){
           if(error) throw error;
-          console.log(result);
+          callback(result);
         });
-        callback('Error listing products');
+        //callback('Error listing products');
       }
     });
   }
@@ -128,8 +131,11 @@ class Database {
         // Implement the query to delete a product
         // productName is the name of the producto to delete
         // remeber once it's finish to comment callback('Error deleting product');
-
-        callback('Error deleting product');
+        database.collection('products').findOneAndDelete({name:productName}, function(error){
+          if(error) throw error;
+          callback("delete product");
+        });
+        //callback('Error deleting product');
       }
     });
   }
@@ -145,8 +151,11 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-
-        callback('Error buying product');
+        database.collection('products').insertOne({userFirstName:userFirstName, productName:productName}, function(error){
+          if(error) throw error;
+          callback("buy product!");
+        });
+        //callback('Error buying product');
       }
     });
   }
@@ -161,7 +170,7 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-
+        database.collection('products').insertOne({review: [{productName:productName}]});
         callback('Error reviewing product');
       }
     });
