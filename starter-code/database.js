@@ -43,7 +43,7 @@ class Database {
         // Implement the query to insert a user
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
-        database.collection('users').insertOne(user,function(error, result){
+        database.collection(users).insertOne(user,function(error, result){
           if(error) throw error;
           callback("user inserted");
         });
@@ -60,7 +60,7 @@ class Database {
         //  LAB 2
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
-        database.collection('users').find({}).toArray(function(error,result){
+        database.collection(users).find({}).toArray(function(error,result){
           if(error) throw error;
           callback(result);
         });
@@ -78,7 +78,7 @@ class Database {
         // Implement the query to delete a user
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
-        database.collection('users').deleteOne({firstName:firstName}, function(error, obj){
+        database.collection(users).deleteOne({firstName:firstName}, function(error, obj){
           if(error) throw error;
           callback('user deleted');
         });
@@ -96,7 +96,7 @@ class Database {
         // Implement the query to insert a product
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
-        database.collection('products').insertOne(product,function(error, result){
+        database.collection(products).insertOne(product,function(error, result){
           if(error) throw error;
           callback("product inserted");
         });;
@@ -113,7 +113,7 @@ class Database {
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
-        database.collection('products').find({}).toArray(function(error,result){
+        database.collection(products).find({}).toArray(function(error,result){
           if(error) throw error;
           callback(result);
         });
@@ -131,7 +131,7 @@ class Database {
         // Implement the query to delete a product
         // productName is the name of the producto to delete
         // remeber once it's finish to comment callback('Error deleting product');
-        database.collection('products').findOneAndDelete({name:productName}, function(error){
+        database.collection(products).findOneAndDelete({name:productName}, function(error){
           if(error) throw error;
           callback("delete product");
         });
@@ -151,10 +151,17 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-        database.collection('products').insertOne({userFirstName:userFirstName, productName:productName}, function(error){
-          if(error) throw error;
-          callback("buy product!");
+        database.collection(products).findOne({ name: productName }, function(error, product){
+          if (error) {
+            callback(error);
+          } else if (!product) {
+            callback('Product Not Found');
+          } else {
+            database.collection(users).updateOne({firstName: userFirstName}, { $push: { shoppingCart: product._id }}, callback );
+            callback('Product purchased');
+          }
         });
+
         //callback('Error buying product');
       }
     });
@@ -170,7 +177,7 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-        database.collection('products').insertOne({review: [{productName:productName}]});
+        database.collection(products).findOne({review: [{productName:productName}]});
         callback('Error reviewing product');
       }
     });
