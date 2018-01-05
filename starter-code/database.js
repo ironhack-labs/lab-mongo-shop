@@ -177,8 +177,17 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-        database.collection(products).findOne({review: [{productName:productName}]});
-        callback('Error reviewing product');
+        database.collection(products).findOne({name: productName}, function(error, product){
+          if (error) {
+            callback(error);
+          } else if (!product) {
+            callback('Product Not Found');
+          } else {
+            database.collection(products).updateOne({name: productName}, { $addToSet: { reviews: review}}, callback );
+            callback('review product');
+          }
+        });
+        //callback('Error reviewing product');
       }
     });
   }
