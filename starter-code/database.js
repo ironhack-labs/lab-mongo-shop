@@ -77,7 +77,7 @@ class Database {
           if(error){
             callback(error);
           }else if(!user){
-            let error = 'Error non-existent user'
+            let error = 'User Not Found'
             callback(error);
           }else{
             this.database.collection('users').deleteOne({'firstName' : firstName}, callback);
@@ -157,7 +157,7 @@ class Database {
           if(error){
             callback(error);
           }else if(!user){
-            let error = 'non-existent user'
+            let error = 'User Not Found'
             callback(error);
           }else{
             this.database.collection('products').findOne({'name':productName},(error,product)=>{
