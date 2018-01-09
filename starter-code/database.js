@@ -44,7 +44,8 @@ class Database {
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
         
-        callback('Error inserting user');
+        database.collection('users').insertOne(user, callback);
+        // callback('Error inserting user');
       }
     });
   }
@@ -58,7 +59,8 @@ class Database {
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
         
-        callback('Error listing users');
+        database.collection('users').find().toArray(callback);
+        // callback('Error listing users');
       }
     });
   }
@@ -73,7 +75,12 @@ class Database {
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
         
-        callback('Error deleting user');
+
+        // var user = database.collection('users').find( { "firstName": { $eq: firstName } } )
+        database.collection('users').deleteOne( { "firstName" : { $eq: firstName } }, callback )
+
+        // database.collection('users').deleteOne(, callback);
+        // callback('Error deleting user');
       }
     });
   }
@@ -88,7 +95,8 @@ class Database {
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
         
-        callback('Error inserting product');
+        database.collection('products').insertOne(product, callback);
+        // callback('Error inserting product');
       }
     });
   }
@@ -102,7 +110,8 @@ class Database {
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
         
-        callback('Error listing products');
+        database.collection('products').find().toArray(callback);
+        // callback('Error listing products');
       }
     });
   }
@@ -117,7 +126,8 @@ class Database {
         // productName is the name of the producto to delete 
         // remeber once it's finish to comment callback('Error deleting product');
         
-        callback('Error deleting product');
+        database.collection('products').deleteOne( { "name" : { $eq: productName } }, callback )
+        // callback('Error deleting product');
       }
     });
   }
@@ -134,7 +144,13 @@ class Database {
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
         
-        callback('Error buying product');
+        // 
+
+        database.collection('users').updateOne( { "firstName" : userFirstName }, { $push: { "shoppingCart": productName } }, callback);
+        
+        // .push(product);
+
+        // callback('Error buying product');
       }
     });
   }
@@ -149,8 +165,10 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
+      
+        database.collection('products').updateOne( { "name" : productName }, { $push: { "reviews": review } }, callback);
         
-        callback('Error reviewing product');
+        // callback('Error reviewing product');
       }
     });
   }
