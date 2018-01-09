@@ -127,9 +127,16 @@ class Database {
       } else {
         // LAB 5
         // Implement the query to list all products
+        database.collection('products').find({}, function(error,result){
+          if(error){
+            console.log("error listing products");
+          } else {
+            console.log("products listed");
+          }
+        })
         // remeber once it's finish to comment callback('Error listing products');
 
-        callback('Error listing products');
+        //callback('Error listing products');
       }
     });
   }
@@ -141,10 +148,17 @@ class Database {
       } else {
         // LAB 6
         // Implement the query to delete a product
+        database.collection('products').remove({"productName":productName},function(error,result){
+          if(error){
+            console.log("error removing the product");
+          } else {
+            console.log("product removed");
+          }
+        })
         // productName is the name of the producto to delete
         // remeber once it's finish to comment callback('Error deleting product');
 
-        callback('Error deleting product');
+        //callback('Error deleting product');
       }
     });
   }
@@ -159,9 +173,22 @@ class Database {
         // userFirstName is the name of user who purchase the product
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
+
+             this.database.collection('products').findOne({'name':productName},(error,product)=>{
+               if(error){
+                 callback(error);
+               }else if(!product){
+                 console.log ("Product Not Found");
+                 callback(error);
+               }else{
+                 this.database.collection('users').updateOne({'firstName':userFirstName},{$push:{'shoppingCart':product._id}},callback);
+               }
+             });
+           }
+         });
         // remeber once it's finish to comment callback('Error buying product');
 
-        callback('Error buying product');
+        //callback('Error buying product');
       }
     });
   }
@@ -175,9 +202,23 @@ class Database {
         // Implement the query to review a product
         // productName is the name of the product to review
         // review is the document to insert
+        this.database.collection('products').findOne({'name':productName},(error,product)=>{
+          if(error){
+            callback(error);
+          }else if(!product){
+            console.log ("Product Not Found");
+            callback(error);
+          }else{
+            this.database.collection('users').updateOne({$push:{'reviews':review}},callback);
+          }
+        });
+       }
+       });
+
+
         // remeber once it's finish to comment callback('Error reviewing product');
 
-        callback('Error reviewing product');
+        //callback('Error reviewing product');
       }
     });
   }
