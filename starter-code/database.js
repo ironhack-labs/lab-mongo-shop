@@ -77,7 +77,7 @@ class Database {
         
 
         // var user = database.collection('users').find( { "firstName": { $eq: firstName } } )
-        database.collection('users').deleteOne( { "firstName" : { $eq: firstName } }, callback )
+        database.collection('users').deleteOne( { "firstName" : firstName }, callback )
 
         // database.collection('users').deleteOne(, callback);
         // callback('Error deleting user');
@@ -126,7 +126,7 @@ class Database {
         // productName is the name of the producto to delete 
         // remeber once it's finish to comment callback('Error deleting product');
         
-        database.collection('products').deleteOne( { "name" : { $eq: productName } }, callback )
+        database.collection('products').deleteOne( { "name" : productName }, callback )
         // callback('Error deleting product');
       }
     });
@@ -147,8 +147,6 @@ class Database {
         // 
 
         database.collection('users').updateOne( { "firstName" : userFirstName }, { $push: { "shoppingCart": productName } }, callback);
-        
-        // .push(product);
 
         // callback('Error buying product');
       }
