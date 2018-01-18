@@ -133,7 +133,7 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-        database.collection('shoppingCarts').insertOne({productName, userFirstName} , callback);
+        database.collection('users').updateOne({"firstName": userFirstName}, {$set: {"shoppingCarts": productName}} , callback);
         // callback('Error buying product');
       }
     });
