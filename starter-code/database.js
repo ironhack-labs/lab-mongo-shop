@@ -5,16 +5,19 @@ const shoppingCarts = 'shoppingCarts';
 
 class Database {
 
-  constructor({ host, database }) {
+  constructor({
+    host,
+    database
+  }) {
     this.url = `mongodb://${host}/${database}`;
   }
 
-  connect(callback = (error, database) => {}){
-    if (this.database){
+  connect(callback = (error, database) => {}) {
+    if (this.database) {
       callback(null, this.database);
     } else {
       MongoDB.MongoClient.connect(this.url, (error, database) => {
-        if (error){
+        if (error) {
           callback(error);
         } else {
           this.database = database;
@@ -24,8 +27,8 @@ class Database {
     }
   }
 
-  close(callback = (error) => {}){
-    if (this.database){
+  close(callback = (error) => {}) {
+    if (this.database) {
       this.database.close(true, callback);
     } else {
       callback();
@@ -34,9 +37,9 @@ class Database {
   // Insert a user
   // user is the object to insert into the collection
   // callback has two arguments error and result 
-  insertUser(user, callback = (error, result) => {}){
+  insertUser(user, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 1
@@ -51,7 +54,7 @@ class Database {
 
   listUsers(callback = (error, users) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         //  LAB 2
@@ -63,24 +66,26 @@ class Database {
     });
   }
 
-  deleteUser( firstName, callback = (error, result) => {}) {
+  deleteUser(firstName, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         //  LAB 3
         // Implement the query to delete a user
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
-        database.collection('users').deleteOne({"firstName": firstName}, callback);
+        database.collection('users').deleteOne({
+          "firstName": firstName
+        }, callback);
         //callback('Error deleting user');
       }
     });
   }
 
-  insertProduct(product, callback = (error, result) => {}){
+  insertProduct(product, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 4
@@ -95,7 +100,7 @@ class Database {
 
   listProducts(callback = (error, products) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 5
@@ -107,22 +112,27 @@ class Database {
     });
   }
 
-  deleteProduct( productName, callback = (error, result) => {}) {
+  deleteProduct(productName, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 6
         // Implement the query to delete a product
         // productName is the name of the producto to delete 
         // remeber once it's finish to comment callback('Error deleting product');
-        database.collection('products').deleteOne({ "name": productName }, callback);
+        database.collection('products').deleteOne({
+          "name": productName
+        }, callback);
         // callback('Error deleting product');
       }
     });
   }
 
-  addProductToShoppingCart({userFirstName, productName}, callback = (error) => {}){
+  addProductToShoppingCart({
+    userFirstName,
+    productName
+  }, callback = (error) => {}) {
     this.connect((error, database) => {
       if (error) {
         callback(error);
@@ -133,13 +143,22 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-        database.collection('users').updateOne({"firstName": userFirstName}, {$push: {"shoppingCarts": productName}} , callback);
+        database.collection('users').updateOne({
+          "firstName": userFirstName
+        }, {
+          $push: {
+            "shoppingCarts": productName
+          }
+        }, callback);
         // callback('Error buying product');
       }
     });
   }
 
-  addReviewToProduct( {productName, review}, callback = (messageResult) => {}){
+  addReviewToProduct({
+    productName,
+    review
+  }, callback = (messageResult) => {}) {
     this.connect((error, database) => {
       if (error) {
         callback(error)
@@ -149,7 +168,13 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-        database.collection('products').updateOne({"name": productName}, {$push: {"review": review}}, callback);
+        database.collection('products').updateOne({
+          "name": productName
+        }, {
+          $push: {
+            "review": review
+          }
+        }, callback);
         //callback('Error reviewing product');
       }
     });
