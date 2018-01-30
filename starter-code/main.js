@@ -2,7 +2,7 @@ const Database = require('./database');
 const Questions = require('./questions');
 const clear = require('clear');
 
-const db = new Database({ host: 'localhost:27017', database: 'myShop'});
+const db = new Database({ host: 'localhost:27017', database: 'myshop'});
 const questions = new Questions();
 
 function mainMenu(){
