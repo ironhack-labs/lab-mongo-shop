@@ -44,7 +44,8 @@ class Database {
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
         
-        callback('Error inserting user');
+        database.collection('users').insertOne(user, callback);
+        //callback('Error inserting user');
       }
     });
   }
