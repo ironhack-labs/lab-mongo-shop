@@ -15,6 +15,7 @@ function mainMenu(){
 				break;
 			case "2":
 				productMenu();
+				
 				break;
 			case "3":
 				buyProduct();
