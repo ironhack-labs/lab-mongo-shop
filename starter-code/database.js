@@ -1,37 +1,38 @@
-const MongoDB = require('mongodb');
-const MongoClient = require('mongodb').MongoClient;
-const users = 'users';
-const products = 'products';
-const shoppingCarts = 'shoppingCarts';
-const dbServer = 'localhost';
-const dbPort   = '27017';
-const dbName   = 'myShop';
+const MongoDB = require("mongodb");
+const MongoClient = require("mongodb").MongoClient;
+const users = "users";
+const products = "products";
+const shoppingCarts = "shoppingCarts";
+const dbServer = "localhost";
+const dbPort = "27017";
+const dbName = "myShop";
 const connectionURL = `mongodb://${dbServer}:${dbPort}/${dbName}`;
-
 
 // Use connect method to connect to the server
 MongoClient.connect(connectionURL, function(error, db) {
-  if(error) { console.log("Error connecting to server", error); return;}
+  if (error) {
+    console.log("Error connecting to server", error);
+    return;
+  }
 
-  console.log("Connected successfully to server")
+  console.log("Connected successfully to server");
 
-  // Make your queries here   
+  // Make your queries here
 
   db.close();
 });
 
 class Database {
-
   constructor({ host, database }) {
     this.url = `mongodb://${host}/${database}`;
   }
 
-  connect(callback = (error, database) => {}){
-    if (this.database){
+  connect(callback = (error, database) => {}) {
+    if (this.database) {
       callback(null, this.database);
     } else {
       MongoDB.MongoClient.connect(this.url, (error, database) => {
-        if (error){
+        if (error) {
           callback(error);
         } else {
           this.database = database;
@@ -41,8 +42,8 @@ class Database {
     }
   }
 
-  close(callback = (error) => {}){
-    if (this.database){
+  close(callback = error => {}) {
+    if (this.database) {
       this.database.close(true, callback);
     } else {
       callback();
@@ -50,20 +51,17 @@ class Database {
   }
   // Insert a user
   // user is the object to insert into the collection
-  // callback has two arguments error and result 
-  insertUser(user, callback = (error, result) => {}){
+  // callback has two arguments error and result
+  insertUser(user, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 1
         // Implement the query to insert a user
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
-        database.collection('users').insertOne(user, callback);
-        
-
-
+        database.collection("users").insertOne(user, callback);
 
         // callback('Error inserting user');
       }
@@ -72,47 +70,49 @@ class Database {
 
   listUsers(callback = (error, users) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         //  LAB 2
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
-        
-        database.collection('users').find({},callback);
+
+        database.collection("users").find({}, callback);
 
         //callback('Error listing users');
       }
     });
   }
 
-  deleteUser( firstName, callback = (error, result) => {}) {
+  deleteUser(firstName, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         //  LAB 3
         // Implement the query to delete a user
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
-        database.collection('users').deleteOne({"firstName": firstName},callback);
-        
+        database
+          .collection("users")
+          .deleteOne({ firstName: firstName }, callback);
+
         // callback('Error deleting user');
       }
     });
   }
 
-  insertProduct(product, callback = (error, result) => {}){
+  insertProduct(product, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 4
         // Implement the query to insert a product
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
-        database.collection('products').insertOne(product, callback);
-        
+        database.collection("products").insertOne(product, callback);
+
         // callback('Error inserting product');
       }
     });
@@ -120,62 +120,83 @@ class Database {
 
   listProducts(callback = (error, products) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
-        database.collection('products').find({},callback);
+        database.collection("products").find({}, callback);
         // callback('Error listing products');
       }
     });
   }
 
-  deleteProduct( productName, callback = (error, result) => {}) {
+  deleteProduct(productName, callback = (error, result) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         // LAB 6
         // Implement the query to delete a product
-        // productName is the name of the producto to delete 
+        // productName is the name of the producto to delete
         // remeber once it's finish to comment callback('Error deleting product');
-        database.collection('products').deleteOne({'name': productName},callback)
+        database
+          .collection("products")
+          .deleteOne({ name: productName }, callback);
         // callback('Error deleting product');
       }
     });
   }
 
-  addProductToShoppingCart({userFirstName, productName}, callback = (error) => {}){
+  addProductToShoppingCart(
+    { userFirstName, productName },
+    callback = error => {}
+  ) {
     this.connect((error, database) => {
-      if (error) {
-        callback(error);
-      } else {
-        // LAB 7
-        // Implement the query to buy a product
-        // userFirstName is the name of user who purchase the product
-        // productName is the name of the product that we want to buy
-        // Think if you may need to implement two queries chained
-        // remeber once it's finish to comment callback('Error buying product');
-        
-        callback('Error buying product');
-      }
+      database
+        .collection("products")
+        .findOne({ name: productName }, (error, product) => {
+          if (error) {
+            callback(error);
+          } else if (!product) {
+            const error = "Product Not Found";
+            callback(error);
+          } else {
+            //let myProduct = database.collection('products').find({"name": productName})
+            database
+              .collection("users")
+              .updateOne(
+                { firstName: userFirstName },
+                { $push: { shoppingCart: product._id } },
+                callback
+              );
+
+            // LAB 7
+            // Implement the query to buy a product
+            // userFirstName is the name of user who purchase the product
+            // productName is the name of the product that we want to buy
+            // Think if you may need to implement two queries chained
+            // remeber once it's finish to comment callback('Error buying product');
+
+            //callback('Error buying product');
+          }
+        });
     });
   }
 
-  addReviewToProduct( {productName, review}, callback = (messageResult) => {}){
+  addReviewToProduct({ productName, review }, callback = messageResult => {}) {
     this.connect((error, database) => {
       if (error) {
-        callback(error)
+        callback(error);
       } else {
         // LAB 8
         // Implement the query to review a product
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-        
-        callback('Error reviewing product');
+
+        callback("Error reviewing product");
       }
     });
   }
