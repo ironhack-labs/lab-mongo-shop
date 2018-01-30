@@ -1,12 +1,40 @@
-{
-	"firstName": "John",
-	"lastName": "Smith",
-	"dateBirth": ISODate("2016-12-10T18:28:09.369Z"),
-	"address": {
-	 "streetAddress": "21 2nd Street",
-	 "city": "New York",
-	 "state": "NY",
-	 "postalCode": "10021"
-	},
-	"shoppingCart": []
-}
+[
+  {
+    "firstName": "John",
+    "lastName": "Smith",
+    "dateBirth": "ISODate('2016-12-10T18:28:09.369Z')",
+    "address": {
+      "streetAddress": "21 2nd Street",
+      "city": "New York",
+      "state": "NY",
+      "postalCode": "10021"
+    },
+    "shoppingCart": []
+  },
+
+  {
+    "firstName": "Meriem",
+    "lastName": "Bourbia",
+    "dateBirth": "ISODate('1993-03-06')",
+    "address": {
+      "streetAddress": "Tolbiac",
+      "city": "Paris",
+      "state": "Paris",
+      "postalCode": "75013"
+    },
+    "shoppingCart": []
+  },
+
+  {
+    "firstName": "Josh",
+    "lastName": "Vardey",
+    "dateBirth": "ISODate('1983-06-11')",
+    "address": {
+      "streetAddress": "belleville",
+      "city": "Paris",
+      "state": "Paris",
+      "postalCode": "75011"
+    },
+    "shoppingCart": []
+  }
+]
