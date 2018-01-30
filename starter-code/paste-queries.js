@@ -89,9 +89,17 @@
 // 1.4 | Getting Started with queries
 // ----------------------------------
 // PASTE SHOPPING CART QUERY HERE
-
+> db.users.updateOne(
+    ...   {"firstName" : "Jorge"} , {$set :{"shoppingCart" : [ObjectId("5a709e7b298f72e0248276d5")]}}
+    ...   )
+    { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+    
 
 // PASTE LIST PRODUCTS QUERY HERE
+> db.products.find()
+{ "_id" : ObjectId("5a709e7b298f72e0248276d5"), "name" : "Water Bottle", "description" : "High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe", "category" : "Kitchen", "price" : 23 }
+{ "_id" : ObjectId("5a709fc1298f72e0248276d6"), "name" : "Iron Potato", "description" : "Spicy and taste ferrous potatos made with all the flavor of Matadero Madrid", "category" : "Kitchen", "price" : 9991 }
+{ "_id" : ObjectId("5a709fc1298f72e0248276d7"), "name" : "Marc's Tupper", "description" : "Fancy and nice Tupper made with the best quality plastic of market. Can sometimes become invisible", "category" : "Kitchen", "price" : 42 }
 
 
 // PASTE CATEGORY PRODUCTS QUERY HERE
