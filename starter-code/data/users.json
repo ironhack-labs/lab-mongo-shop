@@ -1,4 +1,28 @@
 {
+	"firstName": "Jesus",
+	"lastName": "Del Rio",
+	"dateBirth": ISODate("1995-12-10T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "eira de arriba",
+	 "city": "A coruña",
+	 "state": "NY",
+	 "postalCode": "15660"
+	},
+	"shoppingCart":[]
+}
+{
+	"firstName": "Alvaro",
+	"lastName": "Mata",
+	"dateBirth": ISODate("1991-12-10T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "Moruxo 75",
+	 "city": "A coruña",
+	 "state": "NY",
+	 "postalCode": "15165"
+	},
+	"shoppingCart":[]
+},
+{
 	"firstName": "John",
 	"lastName": "Smith",
 	"dateBirth": ISODate("2016-12-10T18:28:09.369Z"),
@@ -8,5 +32,6 @@
 	 "state": "NY",
 	 "postalCode": "10021"
 	},
-	"shoppingCart": []
-}
+	"shoppingCart":[]
+  }
+
