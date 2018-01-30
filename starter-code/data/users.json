@@ -10,3 +10,29 @@
 	},
 	"shoppingCart": []
 }
+
+{
+	"firstName": "Hanna",
+	"lastName": "Mazzoni",
+	"dateBirth": ISODate("1981-12-15T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "43 Rue Vieille du Temple",
+	 "city": "Paris",
+	 "state": "",
+	 "postalCode": "75004"
+	},
+	"shoppingCart": []
+}
+
+{
+	"firstName": "Jean-Nicolas",
+	"lastName": "Piketty",
+	"dateBirth": ISODate("1987-11-05T18:28:09.369Z"),
+	"address": {
+	 "streetAddress": "8, rue Humblot",
+	 "city": "Paris",
+	 "state": "",
+	 "postalCode": "75015"
+	},
+	"shoppingCart": []
+}
