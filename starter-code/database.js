@@ -43,20 +43,22 @@ class Database {
         // Implement the query to insert a user
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
-        
+        database.collection('users').insertOne(user, callback);
         callback('Error inserting user');
       }
-    });
+    }); 
   }
 
   listUsers(callback = (error, users) => {}) {
     this.connect((error, database) => {
-      if (error){
+      if (error) {
         callback(error);
       } else {
         //  LAB 2
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
+        // db1.products().toArray(function(err, items) {
+        //   test.ok(items.length >= 1);
         
         callback('Error listing users');
       }
