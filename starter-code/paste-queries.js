@@ -16,7 +16,36 @@ db.products.insertOne(/Users/lucasmartin/Desktop/lab-mongo-shop/starter-code/dat
 // ----------------------------------
 // PASTE SHOPPING CART QUERY HERE
 
+db.users.updateOne(
+  {
+    "name": 'Carlos'
+  }
+  {
+    $set: {
+      'shoppingCart': { 
+        "name": "Water Bottle",
+        "description":"High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe",
+        "category":"Kitchen",
+        "price":23.0
+     }
+    }
+  }
+);
 
+db.products.find({}).pretty();
+db.products.find({"categorie": "Kitchen"}).pretty();
+db.products.deleteOne('name': 'Water Bottle');
+db.products.update({'name': 'Water Bottle'}
+{
+  "reviews": [
+    {
+      "name": "Shannon",
+      "comment": "This is so warm and comfortable.",
+      "stars": 2,
+      "date": "2016-11-10T18:28:09.369Z"
+    }
+  ]
+});
 // PASTE LIST PRODUCTS QUERY HERE
 
 
