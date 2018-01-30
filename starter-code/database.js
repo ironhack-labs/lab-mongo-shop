@@ -195,8 +195,11 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-
-        callback("Error reviewing product");
+        database.collection("products").updateOne(
+          { "name": productName },
+          { $push: { "reviews": review }}, callback
+        );
+        //callback("Error reviewing product");
       }
     });
   }
