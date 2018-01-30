@@ -88,10 +88,10 @@ db.users.updateMany([
 // ----------------------------------
 // PASTE SHOPPING CART QUERY HERE
 
-db.users.insertOne(
-    ...     {"shoppingCart" : []}
-    ... )
-    {
+    db.users.updateOne(
+        { "firstName": "John"},
+        { $set: { "shoppingCart": []}}
+      )
 
 // PASTE LIST PRODUCTS QUERY HERE
 db.products.find({})
