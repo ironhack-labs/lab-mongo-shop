@@ -52,7 +52,7 @@ db.products.find({category: "Kitchen"})
 db.products.deleteOne({category: "Electronic"})
 
 // PASTE REVIEW QUERY HERE
-db.products.update({_id: ObjectId("5a7087d5519f3eff11883cc3")}, {$set: {"reviews": [ { "name": "Shannon","comment": "This is so warm and comfortable.",
+db.products.update({_id: ObjectId("5a7087d5519f3eff11883cc3")}, {$set: { "reviews": [ { "name": "Shannon","comment": "This is so warm and comfortable.",
 "stars": 3,
 "date": "2016-11-10T18:28:09.369Z"
 }]}})
