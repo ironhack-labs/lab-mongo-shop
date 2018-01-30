@@ -71,8 +71,9 @@ class Database {
         // Implement the query to delete a user
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
+        database.collection('users').remove(firstName, callback);
 
-        callback('Error deleting user');
+        // callback('Error deleting user');
       }
     });
   }
