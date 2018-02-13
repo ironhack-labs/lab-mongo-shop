@@ -41,10 +41,12 @@ class Database {
       } else {
         // LAB 1
         // Implement the query to insert a user
+        console.log("--------")
+        database.collection(users).insertOne(user,callback)
         // user is the document that we want to insert
         // remeber once it's finish to comment callback('Error inserting user');
         
-        callback('Error inserting user');
+        //callback('Error inserting user');
       }
     });
   }
@@ -56,9 +58,11 @@ class Database {
       } else {
         //  LAB 2
         // Implement the query to insert a user
+        console.log("--------")
+        database.collection(users).find({},callback)
         // remeber once it's finish to comment callback('Error listing users');
         
-        callback('Error listing users');
+        //callback('Error listing users');
       }
     });
   }
@@ -70,10 +74,12 @@ class Database {
       } else {
         //  LAB 3
         // Implement the query to delete a user
+        console.log(firstName)
+        database.collection(users).deleteOne({"firstName":firstName},callback)
         // firstName is the name of user that we want to delete
         // remeber once it's finish to comment callback('Error deleting user');
         
-        callback('Error deleting user');
+        //callback('Error deleting user');
       }
     });
   }
