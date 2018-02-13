@@ -34,11 +34,12 @@ class Database {
   // Insert a user
   // user is the object to insert into the collection
   // callback has two arguments error and result 
-  insertUser(user, callback = (error, result) => {}){
+  insertUser(user, callback = (error, database) => {}){
     this.connect((error, database) => {
       if (error){
         callback(error);
       } else {
+        database.collection(users).insertOne(user, callback);
         // LAB 1
         // Implement the query to insert a user
         // user is the document that we want to insert
@@ -54,6 +55,7 @@ class Database {
       if (error){
         callback(error);
       } else {
+        database.collection(users).find({}, callback)
         //  LAB 2
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
