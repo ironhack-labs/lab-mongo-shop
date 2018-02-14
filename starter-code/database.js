@@ -89,6 +89,8 @@ class Database {
       if (error){
         callback(error);
       } else {
+        console.log("--------");
+        database.collection(products).insertOne(product,callback);
         // LAB 4
         // Implement the query to insert a product
         // product is the document to insert
@@ -104,6 +106,8 @@ class Database {
       if (error){
         callback(error);
       } else {
+        console.log("--------")
+        database.collection(products).find({},callback)
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
@@ -119,6 +123,9 @@ class Database {
         callback(error);
       } else {
         // LAB 6
+   
+        database.collection(products).deleteOne({"name":name},callback)
+        //database.collection(products).deleteOne({"firstName":firstName},callback)
         // Implement the query to delete a product
         // productName is the name of the producto to delete 
         // remeber once it's finish to comment callback('Error deleting product');
