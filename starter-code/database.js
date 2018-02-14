@@ -132,11 +132,16 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-        database.collection('users').updateOne(
-          {"firstName": userFirstName},
-          { $push: {shoppingCart: productName}},
-          {upsert: true});
-        // callback('Error buying product');
+        database.collection(products).findOne({ name: productName }, (error, product) => {
+          if (error) {
+            callback(error);
+          } else if (!product) {
+            const error = 'Product Not Found'
+            callback(error);
+          } else {
+            database.collection(users).updateOne({firstName: userFirstName}, { $push: { shoppingCart: product._id }}, callback );
+          }
+        });
       }
     });
   }
@@ -146,15 +151,15 @@ class Database {
       if (error) {
         callback(error)
       } else {
-        // LAB 8
-        // Implement the query to review a product
-        // productName is the name of the product to review
-        // review is the document to insert
-        // remeber once it's finish to comment callback('Error reviewing product');
-        database.collection('product').updateOne(
-          {"name": productName},
-          { $push: {reviews: review}},
-          {upsert: true});     
+        database.collection(products).updateOne({ name: productName}, { $push: { reviews: review }},(error, result) => {
+            if (error) {
+              callback(error);
+            } else if ( result.result.nModified === 0 ) {
+              callback('Product Not Found');
+            } else {
+              callback();
+            }
+          });
         callback('Error reviewing product');
       }
     });
