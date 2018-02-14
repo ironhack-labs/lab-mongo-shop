@@ -7,7 +7,7 @@
 // ------------------------------------------------------
 // PASTE 3 PRODUCT INSERT QUERIES HERE
 
-
+ 
 // 1.4 | Getting Started with queries
 // ----------------------------------
 // PASTE SHOPPING CART QUERY HERE
