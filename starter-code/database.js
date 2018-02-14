@@ -1,7 +1,7 @@
 const MongoDB = require('mongodb');
-const users = 'users';
-const products = 'products';
-const shoppingCarts = 'shoppingCarts';
+// const users = 'users';
+// const products = 'products';
+// const shoppingCarts = 'shoppingCarts';
 
 class Database {
 
@@ -57,7 +57,7 @@ class Database {
         //  LAB 2
         // Implement the query to insert a user
         // remeber once it's finish to comment callback('Error listing users');
-        database.collection('users').find(callback);
+        database.collection('users').find({}, callback);
         // callback('Error listing users');
       }
     });
@@ -101,7 +101,7 @@ class Database {
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
-        database.collection('products').find();
+        database.collection('products').find({}, callback);
         // callback('Error listing products');
       }
     });
@@ -116,7 +116,7 @@ class Database {
         // Implement the query to delete a product
         // productName is the name of the producto to delete 
         // remeber once it's finish to comment callback('Error deleting product');
-        database.collection('users').deleteOne({name : productName});
+        database.collection('users').deleteOne({"name" : productName});
         // callback('Error deleting product');
       }
     });
@@ -133,7 +133,7 @@ class Database {
         // productName is the name of the product that we want to buy
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
-        database.collection('users').updateOne({name: userFirstName}, {$push: productName});
+        database.collection('users').updateOne({"firstName": userFirstName}, {$push: {"shoppingCart":productName}}, callback);
         // callback('Error buying product');
       }
     });
@@ -149,7 +149,7 @@ class Database {
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
-        database.collection('products').updateOne({name: productName}, {$push: review})
+        database.collection('products').updateOne({"name": productName}, {$push: {"reviews": review}}, callback);
         // callback('Error reviewing product');
       }
     });
