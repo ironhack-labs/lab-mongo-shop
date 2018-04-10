@@ -49,11 +49,51 @@ db.products.find().pretty();
 }
 
 // PASTE CATEGORY PRODUCTS QUERY HERE
-
+db.products.find().pretty();
+{
+	"_id" : ObjectId("5a8328a82628ee417a4982c7"),
+	"name" : "Water Bottle",
+	"description" : "High quality glass bottle provides a healthier way to drink.  Silicone sleeve provides a good grip, a see-through window, and protects the glass vessel.  Eliminates toxic leaching that plastic can cause.  Innovative design holds 22-1/2 ounces.  Dishwasher safe",
+	"category" : "Kitchen",
+	"price" : 23
+}
+{
+	"_id" : ObjectId("5a832c1a2628ee417a4982cc"),
+	"name" : "T-shirt",
+	"description" : "High quality t-shirt",
+	"category" : "clothes",
+	"price" : 15
+}
+{
+	"_id" : ObjectId("5a832c6e2628ee417a4982cd"),
+	"name" : "Machete 3000",
+	"description" : "High quality machete",
+	"category" : "garden tools",
+	"price" : 10,
+	"reviews" : [
+		{
+			"name" : "Shannon",
+			"comment" : "The world's best machete",
+			"stars" : 10,
+			"date" : "2016-11-10T18:28:09.369Z"
+		}
+	]
+}
 
 // PASTE DELETE PRODUCT QUERY HERE
 db.products.deleteOne({name: "Table Cloth"});
 
 // PASTE REVIEW QUERY HERE
-
+db.products.find({name : "Machete 3000"},{reviews : [{name : "Shannon"}]}).pretty();
+{
+	"_id" : ObjectId("5a832c6e2628ee417a4982cd"),
+	"reviews" : [
+		{
+			"name" : "Shannon",
+			"comment" : "The world's best machete",
+			"stars" : 10,
+			"date" : "2016-11-10T18:28:09.369Z"
+		}
+	]
+}
 
