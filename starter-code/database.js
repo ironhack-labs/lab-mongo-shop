@@ -96,6 +96,7 @@ class Database {
         // remeber once it's finish to comment callback('Error inserting product');
 
         // callback('Error inserting product');
+        // done
       }
     });
   }
@@ -105,11 +106,12 @@ class Database {
       if (error) {
         callback(error);
       } else {
+        database.collection(products).find({}, callback);
         // LAB 5
         // Implement the query to list all products
         // remeber once it's finish to comment callback('Error listing products');
 
-        callback('Error listing products');
+        // callback('Error listing products');
       }
     });
   }
