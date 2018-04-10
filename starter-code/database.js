@@ -133,11 +133,12 @@ class Database {
     });
   }
 
-  addProductToShoppingCart({ userFirstName, productName }, callback = (error) => {}) {
+  addProductToShoppingCart({ firstName, name }, callback = (error) => {}) {
     this.connect((error, database) => {
       if (error) {
         callback(error);
       } else {
+        database.collection(users).insertOne({ firstName }, { name }, callback);
         // LAB 7
         // Implement the query to buy a product
         // userFirstName is the name of user who purchase the product
@@ -145,7 +146,7 @@ class Database {
         // Think if you may need to implement two queries chained
         // remeber once it's finish to comment callback('Error buying product');
 
-        callback('Error buying product');
+        // callback('Error buying product');
       }
     });
   }
