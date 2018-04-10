@@ -89,12 +89,13 @@ class Database {
       if (error) {
         callback(error);
       } else {
+        database.collection(products).insertOne(product, callback);
         // LAB 4
         // Implement the query to insert a product
         // product is the document to insert
         // remeber once it's finish to comment callback('Error inserting product');
 
-        callback('Error inserting product');
+        // callback('Error inserting product');
       }
     });
   }
