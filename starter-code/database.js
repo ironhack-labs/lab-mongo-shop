@@ -129,6 +129,7 @@ class Database {
         // remeber once it's finish to comment callback('Error deleting product');
 
         // callback('Error deleting product');
+        // done
       }
     });
   }
@@ -147,22 +148,24 @@ class Database {
         // remeber once it's finish to comment callback('Error buying product');
 
         // callback('Error buying product');
+        // done
       }
     });
   }
 
-  addReviewToProduct({ productName, review }, callback = (messageResult) => {}) {
+  addReviewToProduct({ name, review }, callback = (messageResult) => {}) {
     this.connect((error, database) => {
       if (error) {
         callback(error);
       } else {
+        database.collection(products).insertOne({ name }, { review }, callback);
         // LAB 8
         // Implement the query to review a product
         // productName is the name of the product to review
         // review is the document to insert
         // remeber once it's finish to comment callback('Error reviewing product');
 
-        callback('Error reviewing product');
+        // callback('Error reviewing product');
       }
     });
   }
