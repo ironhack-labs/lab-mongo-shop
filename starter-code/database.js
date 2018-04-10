@@ -112,21 +112,23 @@ class Database {
         // remeber once it's finish to comment callback('Error listing products');
 
         // callback('Error listing products');
+        // done
       }
     });
   }
 
-  deleteProduct(productName, callback = (error, result) => {}) {
+  deleteProduct(name, callback = (error, database) => {}) {
     this.connect((error, database) => {
       if (error) {
         callback(error);
       } else {
+        database.collection(products).deleteOne({ name }, callback);
         // LAB 6
         // Implement the query to delete a product
         // productName is the name of the producto to delete
         // remeber once it's finish to comment callback('Error deleting product');
 
-        callback('Error deleting product');
+        // callback('Error deleting product');
       }
     });
   }
